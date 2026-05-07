@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+
+class TwoSum
+{
+    public static Tuple<int, int> FindTwoSum(IList<int> list, int sum)
+    {
+		if (list == null){ return null; }
+
+		var listDict = new Dictionary<int, int>();
+		int _indexDict = 0;
+	
+		foreach (int _elementVal in list)
+		{
+			  
+			if (listDict.Count > 0) {
+				int _elementCacul = sum - _elementVal;
+				
+				if (listDict.ContainsKey(_elementCacul)) {
+					
+					int _index = listDict[_elementCacul];
+					if (_indexDict != _index) {
+						return new Tuple<int, int>(_indexDict, _index);
+					}
+				}
+			}
+			
+			
+			listDict[_indexDict++] = _elementVal;
+		}
+		
+		return null;
+        
+    }
+
+    public static void Main(string[] args)
+    {
+        Tuple<int, int> indices = FindTwoSum(new List<int>() { 3, 1, 5, 7, 5, 9 }, 10);
+        if(indices != null) 
+        {
+            Console.WriteLine(indices.Item1 + " " + indices.Item2);
+        }
+    }
+	
+	
+	
+	
+	public static Tuple<int, int> FindTwoSum_1(IList<int> list, int sum)
+	{
+		if (list == null)
+			return null;
+
+		var listSet = new Dictionary<int, int>();
+		int i = 0;
+		
+		foreach (var elem in list)
+		{
+			if (listSet.Count > 0) {
+				var search = sum - elem;
+				if (listSet.ContainsKey(search)) {
+					var index = listSet[search];
+					if (i != index) {
+						return new Tuple<int, int>(i, index);
+					}
+				}
+			}
+			listSet[elem] = i++;
+		}
+		return null;
+	}
+}

@@ -1,0 +1,18 @@
+DROP TABLE enrollments;
+
+CREATE TABLE enrollments (
+  id INTEGER NOT NULL PRIMARY KEY,
+  year INTEGER NOT NULL,
+  studentId INTEGER NOT NULL
+);
+
+INSERT INTO enrollments(id, year, studentId) values(1, 2014, 20);
+INSERT INTO enrollments(id, year, studentId) values(2, 2014, 21);
+INSERT INTO enrollments(id, year, studentId) values(3, 2014, 22);
+
+update enrollments set id = 20 
+where id not between 20 and 100;
+
+update enrollments set year = 2015 where year != 2015;
+
+SELECT * FROM enrollments;

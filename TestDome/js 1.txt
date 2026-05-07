@@ -1,0 +1,14 @@
+function formatDate(userDate) {
+  // format from M/D/YYYY to YYYYMMDD
+  var _str = userDate.split('/');
+  return _str[2] +  padMMDD(_str[0]) +  padMMDD(_str[1]);
+}
+
+function padMMDD(_val){
+  
+  var pad = "00";
+  return pad.substring(0, pad.length - _val.length) + _val;
+
+}
+
+console.log(formatDate("2/14/2014"));

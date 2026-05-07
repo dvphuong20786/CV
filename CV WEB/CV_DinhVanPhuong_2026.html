@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Đinh Văn Phương</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 40px 20px;
+        }
+
+        .cv-container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 50px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            gap: 30px;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 1px solid var(--primary);
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .header-content {
+            flex-grow: 1;
+        }
+
+        .header-info h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .header-info p {
+            font-size: 16px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 20px;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 12px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #eff6ff, transparent);
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .summary-text {
+            font-size: 14px;
+            color: #4b5563;
+            text-align: justify;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .skill-category h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: var(--secondary);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 3px;
+        }
+
+        .skill-list {
+            list-style: none;
+            font-size: 13px;
+        }
+
+        .skill-list li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .skill-list li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .experience-item {
+            margin-bottom: 25px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: #111;
+        }
+
+        .exp-date {
+            color: var(--text-light);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .exp-company {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .project-detail {
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 2px solid #f3f4f6;
+        }
+
+        .project-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .exp-desc {
+            font-size: 13px;
+            margin-left: 15px;
+            color: #374151;
+        }
+
+        .exp-desc li {
+            margin-bottom: 4px;
+        }
+
+        .tech-stack {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                padding: 30px;
+                max-width: 100%;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+
+        .top-actions {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .lang-btn,
+        .no-print-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .lang-btn {
+            background: #fff;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-actions no-print">
+        <button class="lang-btn active" type="button" data-lang="vi">VI</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+        <button class="no-print-btn" type="button" onclick="window.print()">Xuất PDF</button>
+    </div>
+
+    <div class="cv-container">
+        <header>
+            <img src="avatar.jpg" alt="Photo" class="profile-photo">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1>Đinh Văn Phương</h1>
+                    <p>Senior Full-stack .NET/Angular Developer | CI/CD Automation | AI-assisted Development</p>
+                </div>
+                <div class="contact-info">
+                    <div>📞 0855 550 200</div>
+                    <div>✉️ dvphuong.dev@gmail.com</div>
+                    <div>📍 Hà Nội, Việt Nam</div>
+                    <div>🎂 20/07/1986</div>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <h2>Tóm tắt chuyên môn</h2>
+            <p class="summary-text">
+                Là một <strong>Lập trình viên Full-stack</strong> với thế mạnh chuyên sâu về hệ sinh thái Microsoft
+                (.NET) và các framework Frontend hiện đại (Angular), tôi có khả năng tự nghiên cứu và triển khai độc lập
+                các giải pháp tự động hóa quy trình (CI/CD) nhằm tối ưu hóa hiệu suất dự án.
+                Tôi đã trực tiếp nghiên cứu, thiết lập và vận hành hệ thống CI/CD tự động hóa toàn diện cho các dự án
+                trọng điểm, đồng thời sở hữu kinh nghiệm trong việc xây dựng các giải pháp chữ ký số, xử lý file PDF và
+                lưu trữ dữ liệu trên môi trường bảo mật cao. Hiện tại, tôi đang tập trung ứng dụng AI-assisted
+                development để tăng
+                tốc quá trình phân tích, xây dựng automation tools.
+            </p>
+        </section>
+
+        <section>
+            <h2>Kỹ năng cốt lõi</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Phát triển Phần mềm</h3>
+                    <ul class="skill-list">
+                        <li><strong>Backend:</strong> .NET Core, .NET MVC, C#</li>
+                        <li><strong>Frontend:</strong> Angular 15-18+, TypeScript, Javascript, jQuery, bootstrap, HTML,
+                            CSS</li>
+                        <li><strong>Mobile:</strong> Flutter (v3.10+)</li>
+                        <li><strong>Web:</strong> Chrome Extensions Development</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Automation & DevOps</h3>
+                    <ul class="skill-list">
+                        <li><strong>CI/CD:</strong> Jenkins on Windows Automation</li>
+                        <li><strong>Infrastructure & Storage:</strong> Docker, SeaweedFS container, AWS S3, PDF file
+                            transfer workflows</li>
+                        <li><strong>AI-assisted Development:</strong> ChatGPT, Claude, Gemini for code review, test-case
+                            generation, refactoring support</li>
+                        <li><strong>Management:</strong> Redmine, Bug Tracking, Planning</li>
+                        <li><strong>Testing:</strong> Basic API Performance Testing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Cơ sở dữ liệu</h3>
+                    <ul class="skill-list">
+                        <li>SQL Server (2008 - 2021)</li>
+                        <li>MySQL, Oracle</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Ngôn ngữ</h3>
+                    <ul class="skill-list">
+                        <li><strong>Tiếng Việt:</strong> Bản ngữ</li>
+                        <li><strong>Tiếng Anh:</strong> Đọc hiểu tài liệu chuyên ngành | Giao tiếp cơ bản | Viết email
+                            công việc</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Kinh nghiệm làm việc chuyên nghiệp</h2>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">Senior Full-stack Developer <i class="tech-stack">(DevOps Lead cho mảng
+                            .NET/Angular)</i></div>
+                    <div class="exp-date">05/2023 – 08/2025</div>
+                </div>
+                <div class="exp-company">NTSC - New Technology Solutions Software Company (VnCloud) <span
+                        style="font-weight: normal; font-size: 13px; color: #6b7280; font-style: italic;">(Quy mô:
+                        70-100 nhân sự | Hà Nội)</span></div>
+
+                <div class="project-detail">
+                    <span class="project-name">Dự án: eSign – Electronic & Digital Signature</span>
+                    <ul class="exp-desc">
+                        <li>Phát triển hệ thống chữ ký điện tử/chữ ký số phục vụ khoảng <strong>2.000-3.000 người dùng</strong>,
+                            hỗ trợ đăng nhập bằng <strong>Microsoft account</strong> trong môi trường doanh nghiệp.</li>
+                        <li>Thiết kế UI screens bằng Figma, chuyển đổi nhanh chóng từ design sang code Frontend.</li>
+                        <li>Xây dựng các form chính: Home, Dashboard, Request List, Signing Form (sử dụng
+                            <strong>Syncfusion PDF Viewer</strong>).
+                        </li>
+                        <li>Phát triển Backend APIs cho việc gửi Email và tích hợp <strong>SignNow</strong>.</li>
+                        <li>Triển khai luồng truyền và lưu trữ file PDF từ server sang Docker container sử dụng
+                            <strong>SeaweedFS</strong>, kết hợp <strong>AWS S3</strong> cho nhu cầu lưu trữ dữ liệu bảo
+                            mật.
+                        </li>
+                        <li>Trực tiếp thiết lập hệ thống <strong>Jenkins trên Windows</strong> chạy CI/CD tự động cho 05
+                            dự án sử dụng .NET Core 7 và Angular 18+.</li>
+                        <li>Thực hiện Performance Test cho các API và xử lý lỗi liên quan đến chữ ký số sau khi hoàn
+                            thiện.</li>
+                    </ul>
+                    <div class="tech-stack">Tech: Figma, ASP.NET Zero, Angular 15, Syncfusion, .NET Core, SQL Server
+                        2019, Docker, SeaweedFS, AWS S3.</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">Senior Full-stack Developer</div>
+                    <div class="exp-date">2021 – 2023</div>
+                </div>
+                <div class="exp-company">NTSC - Dự án Toyota Vietnam (Phúc Yên) <span
+                        style="font-weight: normal; font-size: 13px; color: #6b7280; font-style: italic;">(Quy mô:
+                        70-100 nhân sự | Vĩnh Phúc)</span></div>
+                <div class="project-detail">
+                    <span class="project-name">Dự án: Factory Management Systems</span>
+                    <ul class="exp-desc">
+                        <li>Phát triển các hệ thống quản lý nhà máy phục vụ khoảng <strong>2.000-3.000 người
+                                dùng</strong>,
+                            bao gồm theo dõi tiến độ sản xuất, quản lý kho hàng và quản lý vị trí linh kiện.</li>
+                        <li>Xử lý dữ liệu sản xuất khoảng <strong>10.000-20.000 records</strong>, có cơ chế chuyển dữ
+                            liệu
+                            sang bảng lưu trữ/đối soát khác theo chu kỳ vài ngày để giữ hiệu năng và phục vụ nghiệp vụ
+                            nhà máy.</li>
+                        <li>Xây dựng ứng dụng di động bằng <strong>Flutter v3.10</strong> để quản lý hệ thống nhà máy và
+                            tracking tiến độ tại từng trạm làm việc.</li>
+                        <li>Chuyển đổi (Migrate) các dự án .NET MVC cũ sang Angular và SQL Server 2019.</li>
+                        <li>Thiết kế UI bằng Figma/Photoshop và cắt HTML cho các màn hình giao diện chính.</li>
+                    </ul>
+                    <div class="tech-stack">Tech: ASP.NET Zero, Angular 15, Flutter v3.10, Bootstrap, SQL Server 2019.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">Full-stack Developer</div>
+                    <div class="exp-date">2015 – 2021</div>
+                </div>
+                <div class="exp-company">Dự án Toyota Vietnam (Giai đoạn 1) <span
+                        style="font-weight: normal; font-size: 13px; color: #6b7280; font-style: italic;">(Vĩnh
+                        Phúc)</span></div>
+                <ul class="exp-desc">
+                    <li>Phát triển các Web Apps quản lý hệ thống nhà máy: Quản lý xưởng sơn (Paint shop), xưởng hàn
+                        (Welding shop), kho linh kiện.</li>
+                    <li>Xử lý các module: Unloading process, lot arrangement và delivery đến các trạm sản xuất.</li>
+                </ul>
+                <div class="tech-stack">Tech: .NET MVC, C#, jQuery, SQL Server 2019, DevExpress.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">Web Developer</div>
+                    <div class="exp-date">2010 – 2015</div>
+                </div>
+                <div class="exp-company">Tri Nam Technology Company <span
+                        style="font-weight: normal; font-size: 13px; color: #6b7280; font-style: italic;">(Quy mô: 50-70
+                        nhân sự | Hà Nội)</span></div>
+                <ul class="exp-desc">
+                    <li>Phát triển website thương mại điện tử và cổng thông tin bằng DotNetNuke framework.</li>
+                    <li>Chuyển đổi UI design từ file Photoshop sang giao diện web.</li>
+                </ul>
+                <div class="tech-stack">Tech: DotNetNuke, C#, jQuery, SQL Server.</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Dự án cá nhân (2021 - Hiện tại)</h2>
+            <div class="project-detail" style="background: #f9fafb; padding: 10px; border-radius: 4px;">
+                <strong>Algorithmic Trading Automation System (MQL5/MT5):</strong>
+                <p style="font-size: 13px; margin-top: 5px;">Phát triển hệ thống tự động hóa xử lý tín hiệu trên MT5
+                    bằng
+                    MQL5, tập trung vào kiến trúc Expert Advisor, quản lý trạng thái lệnh, kiểm soát rủi ro, backtesting
+                    và logic xác nhận tín hiệu đa khung thời gian. Ứng dụng AI Agents để hỗ trợ phân tích chiến lược,
+                    sinh test case và tăng tốc quá trình refactor logic phức tạp.</p>
+            </div>
+            <div class="project-detail"
+                style="background: #f9fafb; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                <strong>Chrome Extension Development:</strong>
+                <p style="font-size: 13px; margin-top: 5px;">Phát triển nhiều Chrome Extensions và browser automation
+                    tools phục vụ công việc hằng ngày: tự động hóa thao tác lặp lại, trích xuất dữ liệu, bổ sung UI hỗ
+                    trợ
+                    trên các website có sẵn, xử lý form/action workflow và tạo công cụ nội bộ để tăng tốc quy trình làm
+                    việc. Ví dụ public: extension hỗ trợ thao tác trên TradingView/ECMarkets.
+                    <a href="https://github.com/dvphuong20786/extensions-chrome-tradingview-ecmarkets-.git"
+                        target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Học vấn</h2>
+            <div style="font-size: 13px;">
+                <strong>Hanoi University of Industry (2006 - 2010):</strong> Công nghệ thông tin - Loại Khá (GPA
+                7.18)<br>
+                <strong>Aptech Hanoi (2010 - 2013):</strong> ACCP - Loại Distinction
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const enContent = {
+            '.no-print-btn': 'Export PDF',
+            '.header-info p': 'Senior Full-stack .NET/Angular Developer | CI/CD Automation | AI-assisted Development',
+            '.contact-info div:nth-child(3)': '📍 Hanoi, Vietnam',
+            '.contact-info div:nth-child(4)': '🎂 Date of birth: 20/07/1986',
+
+            'section:nth-of-type(1) h2': 'Professional Summary',
+            'section:nth-of-type(1) .summary-text': 'Senior Full-stack Developer with strong experience in the Microsoft ecosystem (.NET), modern frontend frameworks (Angular), and enterprise workflow automation. I can independently research, design, and implement CI/CD solutions to improve delivery efficiency. I have directly set up and operated Jenkins-based automation for key projects, built digital signature systems, PDF file-processing workflows, and secure storage integrations using Docker, SeaweedFS, and AWS S3. Recently, I have focused on AI-assisted development and automation tools.',
+
+            'section:nth-of-type(2) h2': 'Core Skills',
+            '.skill-category:nth-child(1) h3': 'Software Development',
+            '.skill-category:nth-child(1) .skill-list li:nth-child(1)': '<strong>Backend:</strong> .NET Core, .NET MVC, C#',
+            '.skill-category:nth-child(1) .skill-list li:nth-child(2)': '<strong>Frontend:</strong> Angular 15-18+, TypeScript, JavaScript, jQuery, Bootstrap, HTML, CSS',
+            '.skill-category:nth-child(1) .skill-list li:nth-child(3)': '<strong>Mobile:</strong> Flutter (v3.10+)',
+            '.skill-category:nth-child(1) .skill-list li:nth-child(4)': '<strong>Web:</strong> Chrome Extensions Development',
+            '.skill-category:nth-child(2) h3': 'Automation & DevOps',
+            '.skill-category:nth-child(2) .skill-list li:nth-child(1)': '<strong>CI/CD:</strong> Jenkins on Windows Automation',
+            '.skill-category:nth-child(2) .skill-list li:nth-child(2)': '<strong>Infrastructure & Storage:</strong> Docker, SeaweedFS container, AWS S3, PDF file transfer workflows',
+            '.skill-category:nth-child(2) .skill-list li:nth-child(3)': '<strong>AI-assisted Development:</strong> ChatGPT, Claude, Gemini for code review, test-case generation, refactoring support',
+            '.skill-category:nth-child(2) .skill-list li:nth-child(4)': '<strong>Management:</strong> Redmine, Bug Tracking, Planning',
+            '.skill-category:nth-child(2) .skill-list li:nth-child(5)': '<strong>Testing:</strong> Basic API Performance Testing',
+            '.skill-category:nth-child(3) h3': 'Databases',
+            '.skill-category:nth-child(3) .skill-list li:nth-child(1)': 'SQL Server (2008 - 2021)',
+            '.skill-category:nth-child(3) .skill-list li:nth-child(2)': 'MySQL, Oracle',
+            '.skill-category:nth-child(4) h3': 'Languages',
+            '.skill-category:nth-child(4) .skill-list li:nth-child(1)': '<strong>Vietnamese:</strong> Native',
+            '.skill-category:nth-child(4) .skill-list li:nth-child(2)': '<strong>English:</strong> Technical Reading & Comprehension | Basic Communication | Business Email Writing',
+
+            'section:nth-of-type(3) h2': 'Professional Experience',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-title': 'Senior Full-stack Developer <i class="tech-stack">(DevOps Lead for .NET/Angular)</i>',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-company': 'NTSC - New Technology Solutions Software Company (VnCloud) <span style="font-weight: normal; font-size: 13px; color: #6b7280; font-style: italic;">(Size: 70-100 employees | Hanoi)</span>',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .project-name': 'Project: eSign - Electronic & Digital Signature',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-desc li:nth-child(1)': 'Developed an electronic/digital signature system serving approximately <strong>2,000-3,000 users</strong>, with <strong>Microsoft account</strong> login support in an enterprise environment.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-desc li:nth-child(2)': 'Designed UI screens in Figma and quickly converted designs into frontend code.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-desc li:nth-child(3)': 'Built key screens: Home, Dashboard, Request List, and Signing Form using <strong>Syncfusion PDF Viewer</strong>.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-desc li:nth-child(4)': 'Developed backend APIs for email delivery and <strong>SignNow</strong> integration.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-desc li:nth-child(5)': 'Implemented PDF file transfer and storage workflows from server to Docker container using <strong>SeaweedFS</strong>, with <strong>AWS S3</strong> for secure data storage needs.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-desc li:nth-child(6)': 'Set up <strong>Jenkins on Windows</strong> to run automated CI/CD for 5 projects using .NET 7 and Angular 18+.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(1) .exp-desc li:nth-child(7)': 'Performed API performance testing and resolved issues related to digital signature processing.',
+
+            'section:nth-of-type(3) > .experience-item:nth-of-type(2) .exp-title': 'Senior Full-stack Developer',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(2) .exp-company': 'NTSC - Toyota Vietnam Project (Phuc Yen) <span style="font-weight: normal; font-size: 13px; color: #6b7280; font-style: italic;">(Size: 70-100 employees | Vinh Phuc)</span>',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(2) .project-name': 'Project: Factory Management Systems',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(2) .exp-desc li:nth-child(1)': 'Developed factory management systems serving approximately <strong>2,000-3,000 users</strong>, including production progress tracking, warehouse management, and parts location management.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(2) .exp-desc li:nth-child(2)': 'Handled approximately <strong>10,000-20,000 production records</strong>, with periodic data transfer to separate archive/reconciliation tables every few days to maintain performance and support factory operations.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(2) .exp-desc li:nth-child(3)': 'Built a <strong>Flutter v3.10</strong> mobile application for factory operations and workstation progress tracking.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(2) .exp-desc li:nth-child(4)': 'Migrated legacy .NET MVC projects to Angular and SQL Server 2019.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(2) .exp-desc li:nth-child(5)': 'Designed UI in Figma/Photoshop and implemented HTML for key interface screens.',
+
+            'section:nth-of-type(3) > .experience-item:nth-of-type(3) .exp-title': 'Full-stack Developer',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(3) .exp-company': 'Toyota Vietnam Project (Phase 1) <span style="font-weight: normal; font-size: 13px; color: #6b7280; font-style: italic;">(Vinh Phuc)</span>',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(3) .exp-desc li:nth-child(1)': 'Developed factory management web applications for paint shop, welding shop, and parts warehouse operations.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(3) .exp-desc li:nth-child(2)': 'Implemented modules for unloading process, lot arrangement, and delivery to production workstations.',
+
+            'section:nth-of-type(3) > .experience-item:nth-of-type(4) .exp-title': 'Web Developer',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(4) .exp-company': 'Tri Nam Technology Company <span style="font-weight: normal; font-size: 13px; color: #6b7280; font-style: italic;">(Size: 50-70 employees | Hanoi)</span>',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(4) .exp-desc li:nth-child(1)': 'Developed e-commerce websites and portal systems using the DotNetNuke framework.',
+            'section:nth-of-type(3) > .experience-item:nth-of-type(4) .exp-desc li:nth-child(2)': 'Converted Photoshop UI designs into web interfaces.',
+
+            'section:nth-of-type(4) h2': 'Personal Projects (2021 - Present)',
+            'section:nth-of-type(4) .project-detail:nth-of-type(1) strong': 'Algorithmic Trading Automation System (MQL5/MT5):',
+            'section:nth-of-type(4) .project-detail:nth-of-type(1) p': 'Developed an automated signal-processing system on MT5 using MQL5, focusing on Expert Advisor architecture, order state management, risk control, backtesting, and multi-timeframe signal confirmation logic. Used AI Agents to support strategy analysis, test case generation, and refactoring of complex logic.',
+            'section:nth-of-type(4) .project-detail:nth-of-type(2) strong': 'Chrome Extension Development:',
+            'section:nth-of-type(4) .project-detail:nth-of-type(2) p': 'Developed multiple Chrome Extensions and browser automation tools for daily work: repetitive action automation, data extraction, UI augmentation on existing websites, form/action workflow handling, and internal tools to speed up operational workflows. Public example: extension for TradingView/ECMarkets. <a href="https://github.com/dvphuong20786/extensions-chrome-tradingview-ecmarkets-.git" target="_blank" rel="noopener noreferrer">GitHub Repository</a>',
+
+            'section:nth-of-type(5) h2': 'Education',
+            'section:nth-of-type(5) div': '<strong>Hanoi University of Industry (2006 - 2010):</strong> Information Technology - Good (GPA 7.18)<br><strong>Aptech Hanoi (2010 - 2013):</strong> ACCP - Distinction'
+        };
+
+        const originalContent = {};
+
+        Object.keys(enContent).forEach((selector) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                originalContent[selector] = element.innerHTML;
+            }
+        });
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.title = lang === 'en' ? 'CV - Dinh Van Phuong' : 'CV - Đinh Văn Phương';
+
+            Object.keys(enContent).forEach((selector) => {
+                const element = document.querySelector(selector);
+                if (!element) return;
+                element.innerHTML = lang === 'en' ? enContent[selector] : originalContent[selector];
+            });
+
+            document.querySelectorAll('.lang-btn').forEach((button) => {
+                button.classList.toggle('active', button.dataset.lang === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach((button) => {
+            button.addEventListener('click', () => setLanguage(button.dataset.lang));
+        });
+    </script>
+</body>
+
+</html>

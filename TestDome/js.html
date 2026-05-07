@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="runt"></p>
+<p id="log"></p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+
+function Caculate(membershipId) {
+ 
+  document.getElementById("runt").innerHTML = 
+		document.getElementById("runt").innerHTML + " / " +  membershipId;
+  
+  if (membershipId.length > 1) {
+    
+	
+    var _carcul = 0;  
+    for(var i = 0; i < membershipId.length ;  i++){
+    
+      var _subInt = parseInt(membershipId.substr(i,1));
+	  var _strlog = document.getElementById("log").innerHTML;
+      document.getElementById("log").innerHTML = _strlog + " <br /> " +  _subInt;  
+      _carcul = _carcul + _subInt;
+    
+    }
+	
+    return Caculate(_carcul.toString()); 
+  }
+  else{ 
+	  return membershipId;
+  }
+   
+}
+
+
+function createCheckDigit(membershipId) {
+ 
+  return Caculate(membershipId); 
+  
+}
+
+
+
+ function myFunction(){
+ 
+	document.getElementById("demo").innerHTML = createCheckDigit("55555");
+  
+ }
+ 
+</script>
+
+</body>
+</html>

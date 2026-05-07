@@ -1,0 +1,19 @@
+function ensure(value) {
+  // Your code goes here
+  
+if( value !== 'undefined' )
+  {
+    return value;
+    
+  }
+  else if{
+    return "is value under";
+  }
+  
+}
+
+try {
+  console.log(ensure());
+} catch(err) {
+  console.log(err);
+}
